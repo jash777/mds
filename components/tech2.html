@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDS Technologies</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+    <div id="desktopContent"></div>
+    <div id="mobileContent"></div>
+
+    <!-- <script>
+        function isMobile() {
+            return window.innerWidth <= 767;
+        }
+
+        function loadContent() {
+            const desktopContent = document.getElementById('desktopContent');
+            const mobileContent = document.getElementById('mobileContent');
+
+            if (isMobile()) {
+                fetch('mobile.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        mobileContent.innerHTML = html;
+                        desktopContent.innerHTML = '';
+                    });
+            } else {
+                fetch('desktop.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        desktopContent.innerHTML = html;
+                        mobileContent.innerHTML = '';
+                    });
+            }
+        }
+
+        // Initial load
+        loadContent();
+
+        // Reload on window resize
+        window.addEventListener('resize', loadContent);
+    </script> -->
+    <script>
+        function isMobile() {
+            return window.innerWidth <= 767;
+        }
+
+        function loadContent() {
+            const desktopContent = document.getElementById('desktopContent');
+            const mobileContent = document.getElementById('mobileContent');
+
+            if (isMobile()) {
+                fetch('mobile.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        mobileContent.innerHTML = html;
+                        desktopContent.innerHTML = '';
+                        // Execute scripts in the loaded content
+                        const scripts = mobileContent.getElementsByTagName('script');
+                        Array.from(scripts).forEach(script => {
+                            const scriptElement = document.createElement('script');
+                            scriptElement.textContent = script.textContent;
+                            document.body.appendChild(scriptElement).parentNode.removeChild(scriptElement);
+                        });
+                    });
+            } else {
+                fetch('desktop.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        desktopContent.innerHTML = html;
+                        mobileContent.innerHTML = '';
+                    });
+            }
+        }
+
+        // Initial load
+        loadContent();
+
+        // Reload on window resize
+        window.addEventListener('resize', loadContent);
+    </script>
+</body>
+</html>

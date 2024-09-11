@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManDin Studios</title>
+    <link rel="stylesheet" href="./css/responsive.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body x-data="{ mobileMenuOpen: false }">
+    <div class="main-container">
+
+        <header class="nav-container">
+            <nav class="nav-body">
+                <a href="index.html" class="logo-container">
+                    <img class="logo" src="https://mdstudios.s3.ap-south-1.amazonaws.com/logo2.png" alt="ManDin Studios Logo"/>
+                </a>
+                <button class="menu-toggle" @click="mobileMenuOpen = !mobileMenuOpen" aria-label="Toggle menu">
+                    <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div class="nav-right" :class="{ 'active': mobileMenuOpen }">
+                    <ul class="nav-items">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Technologies</a></li>
+                        <li><a href="./components/team.html">Team</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                    <a href="contact.html" class="nav-button">Contact Us</a>
+                </div>
+            </nav>
+        </header>
+
+         
+    </div>
+</body>
+</html>

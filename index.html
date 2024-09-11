@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/mobilecss.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>    
     <title>ManDin Studios</title>
 </head>
-<body>
+<body x-data="{ mobileMenuOpen: false }">
     <div class="maincontainer">
-
                 <!---------------      Navbar Section start             -->
 
         <div class="navcontainer">
             <div class="navbody">
-                <div>
                     <a href="index.html"><img class="logo" src="https://mdstudios.s3.ap-south-1.amazonaws.com/logo2.png"/></a>
-                </div>
-                <div class="navright">
+                <div class="navright" :class="{ 'active': mobileMenuOpen }">
                     <ul class="navitems">
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Technologies</a></li>
-                        <li><a href="./components/team.html">Team</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="./components/services.html">WHAT WE DO</a></li>
+                        <li><a href="./components/technologies.html">WHY US</a></li>
+                        <li><a href="./components/team.html">TEAM</a></li>
+                        <li><a href="#">ABOUT</a></li>
                     </ul>
 
                     
@@ -34,23 +33,6 @@
 
 
                                   <!---------------      Hero Section starts             -->
-
-        <!-- <div class="herocontainer">
-            <div class="herobody">
-                <p>We make digital and simple</p> 
-                <h1>BRANDING.</h1>
-                <h1>PRODUCTS.</h1>
-                <h1>EXPERIENCES.</h1>
-               
-               <button class="whybutton">Why MDS?</button>
-               
-               <div class="heroimg">
-               </div>
-
-              </div>
-
-        </div> -->
-
          <section class="hero-container">
                 <div class="hero-body">
                     <p class="hero-tagline">We make digital and simple</p> 
@@ -61,7 +43,8 @@
                     </h1>
                     <button class="why-button">Why MDS?</button>
                 </div>
-                <div class="hero-img"></div>
+                <div class="mobilehero">                 <div class="hero-img"></div>
+            </div>
             </section>
         <!---------------      Hero Section ends             -->
 
@@ -317,6 +300,21 @@ behavior: 'smooth'
 }
 
 window.addEventListener('scroll', toggleButtonVisibility);
-backToTopBtn.addEventListener('click', scrollToTop); </script>
+backToTopBtn.addEventListener('click', scrollToTop); 
+
+document.querySelector('.menu-icon').addEventListener('click', function() {
+  this.classList.toggle('active');
+  document.querySelector('.navitems').classList.toggle('active');
+});
+
+
+
+
+
+
+
+
+
+</script>
 </body>
 </html>

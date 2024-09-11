@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Navbar</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Mobile Navbar styles */
+        .mobile-navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .mobile-navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .mobile-navbar-logo img {
+            height: 30px;
+        }
+
+        .mobile-navbar-toggle {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-navbar-menu {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-navbar-menu.active {
+            display: block;
+        }
+
+        .mobile-navbar-menu li {
+            padding: 10px 20px;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .mobile-navbar-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="mobile-navbar">
+        <div class="mobile-navbar-container">
+            <div class="mobile-navbar-logo">
+                <img src="https://mdstudios.s3.ap-south-1.amazonaws.com/logo2.png" alt="MDS Technologies Logo">
+            </div>
+            <button class="mobile-navbar-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+        <ul class="mobile-navbar-menu" id="mobileMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
