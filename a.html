@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Security Services</title>
+    <style>
+               body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .services2container {
+            max-width: 800px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .services2container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        .services2body {
+            padding: 2.5rem;
+        }
+        .services2content h2 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .services2content h4 {
+            color: #34495e;
+            margin-bottom: 1.5rem;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        .services-list {
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+        .services-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 25px;
+        }
+        .services-list li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(41, 128, 185, 0.3);
+        }
+        .service-img2 {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .service-img2 img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .service-img2 img:hover {
+            transform: scale(1.05);
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .popup.active {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .popup-content {
+            margin-bottom: 20px;
+        }
+        .popup-content h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        .popup-content p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .popup-content ul {
+            padding-left: 20px;
+        }
+        .popup-content li {
+            margin-bottom: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover {
+            color: #34495e;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="services2container">
+        <div class="services2body">
+            <div class="services2content">
+                <h2>CYBER SECURITY</h2>
+                <h4>Why Choose Us for Web Development?</h4>
+                <ul class="services-list">
+                    <li><strong>Tailored Solutions:</strong> We don't do one-size-fits-all. Every website we build is custom-designed to reflect your brand and business goals.</li>
+                    <li><strong>Performance-Driven:</strong> Our websites are built with speed, SEO, and user experience in mind to ensure that your audience stays engaged.</li>
+                </ul>
+                <button id="learnMoreBtn">Learn more</button>
+            </div>
+        </div>
+        <div class="service-img2">
+            <img src="./assets/image5.png" alt="Cyber Security Service">
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="window-header" id="popup">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <div class="securityWindow">
+            <h3>More About Our Cyber Security Services</h3>
+            <p>At our company, we pride ourselves on providing top-notch cyber security solutions tailored to your specific needs. Our team of experts utilizes cutting-edge technologies and best practices to ensure your digital assets remain protected.</p>
+            <h4>Our Comprehensive Approach Includes:</h4>
+            <ul>
+                <li>Vulnerability Assessments and Penetration Testing</li>
+                <li>24/7 Threat Monitoring and Response</li>
+                <li>Secure Cloud Solutions</li>
+                <li>Employee Security Awareness Training</li>
+                <li>Compliance and Risk Management</li>
+            </ul>
+            <p>With our services, you can focus on growing your business while we take care of keeping it secure.</p>
+        </div>
+    </div>
+
+    <script>
+ document.addEventListener('DOMContentLoaded', function() {
+            const securityIcon = document.getElementById('Cyber Security Service');
+            const securityWindow = document.getElementById('securityWindow');
+            const closeBtn = document.getElementById('closeBtn');
+            const windowHeader = securityWindow.querySelector('.window-header');
+
+            let isDragging = false;
+            let startX, startY, startLeft, startTop;
+
+            function openWindow(e) {
+                const rect = e.target.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                
+                securityWindow.style.left = `${x}px`;
+                securityWindow.style.top = `${y}px`;
+                securityWindow.style.transformOrigin = 'top left';
+                securityWindow.classList.add('active');
+            }
+
+            function closeWindow() {
+                securityWindow.classList.remove('active');
+            }
+
+            function startDragging(e) {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                startLeft = securityWindow.offsetLeft;
+                startTop = securityWindow.offsetTop;
+                
+                document.addEventListener('mousemove', drag);
+                document.addEventListener('mouseup', stopDragging);
+            }
+
+            function drag(e) {
+                if (isDragging) {
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+                    securityWindow.style.left = `${startLeft + dx}px`;
+                    securityWindow.style.top = `${startTop + dy}px`;
+                }
+            }
+
+            function stopDragging() {
+                isDragging = false;
+                document.removeEventListener('mousemove', drag);
+                document.removeEventListener('mouseup', stopDragging);
+            }
+
+            securityIcon.addEventListener('click', openWindow);
+            closeBtn.addEventListener('click', closeWindow);
+            windowHeader.addEventListener('mousedown', startDragging);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHAT WE DO</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="desktop-index"></div>
+    <div id="mobileContent"></div>
+
+    <script>
+        function isMobile() {
+            return window.innerWidth <= 767;
+        }
+
+        function initializeMobileMenu() {
+            const navbarMenu = document.getElementById('navbarMenu');
+            const navbarToggle = document.getElementById('navbarToggle');
+
+            if (navbarMenu && navbarToggle) {
+                navbarToggle.addEventListener('click', function() {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.classList.toggle('active');
+                });
+
+                window.addEventListener('scroll', function() {
+                    const navbar = document.querySelector('.navbar');
+                    if (navbar) {
+                        if (window.scrollY > 50) {
+                            navbar.style.padding = '0.3rem 2rem';
+                            navbar.style.backgroundColor = 'rgba(162, 179, 212, 0.9)';
+                        } else {
+                            navbar.style.padding = '0.5rem 2rem';
+                            navbar.style.backgroundColor = 'var(--secondary-color)';
+                        }
+                    }
+                });
+            }
+        }
+
+        function loadContent() {
+            const desktopContent = document.getElementById('desktop-index');
+            const mobileContent = document.getElementById('mobileContent');
+
+            if (isMobile()) {
+                fetch('../components/mobile.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        mobileContent.innerHTML = html;
+                        desktopContent.innerHTML = '';
+                        initializeMobileMenu();
+                    });
+            } else {
+                fetch('index.html')
+                    .then(response => response.text())
+                    .then(html => {
+                        desktopContent.innerHTML = html;
+                        mobileContent.innerHTML = '';
+                    });
+            }
+        }
+
+        // Initial load
+        loadContent();
+
+        // Reload on window resize
+        window.addEventListener('resize', loadContent);
+
+    window.onload = function() {
+        // Get all cookies and split them by ';'
+        const cookies = document.cookie.split(";");
+
+        // Loop through cookies and delete each one by setting its expiry date in the past
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i];
+            const eqPos = cookie.indexOf("=");
+            const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+        }
+    };
+
+
+    </script>
+</body>
+</html>

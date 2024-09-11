@@ -29,7 +29,7 @@ body {
     position: relative;
     z-index: 10;
     transition: opacity 1s ease-in;
-    margin-top: -0.3%;
+    margin-top: -1%;
   
   }
   .navbody {
@@ -49,8 +49,8 @@ body {
   }
   
   .navbutton {
-    color: #fff;
-    background: #000000;
+    color: #ffffff;
+    background:#A2B3D4;
     padding-right: 2.5rem;
     padding-left: 2.5rem;
     outline: 0;
@@ -72,14 +72,14 @@ body {
     position: relative;
     display: inline-block;
     text-decoration: none !important; /* Ensure underline is removed */
-    color: black; /* Set the desired color */
+    color: rgb(0, 0, 0); /* Set the desired color */
     transition: color 0.3s; /* Optional: for hover effect */
   }
   
   /* Global style for all anchor tags to prevent underline */
   a {
     text-decoration: none; /* Remove underline globally */
-    color: black; /* Consistent text color */
+    color: rgb(238, 232, 232); /* Consistent text color */
   }
   
   
@@ -176,12 +176,6 @@ body {
     width: 70%;
 }
 
-.service-img2 {
-    position: relative;
-    margin-top: -970px;
-    margin-left: 200px;
-    transform: scaleX(-1);
-}
 
 .service-img6 {
   position: relative;
@@ -191,10 +185,44 @@ body {
   bottom: 250px;
   right:90px
 }
-.service-img2 img {
-    width: 60%;
-    margin-left: 800px;
+
+.serviceimgblur2{
+  position: relative;
 }
+.serviceimgblur2 img {
+  position: absolute;
+  z-index: 1;
+  opacity: 20%;
+  bottom: 7px;
+  left: 1100px;
+  
+}
+.serviceblur {
+  position: absolute;
+  z-index: 1;
+  margin-top: -680px;
+  margin-left: 200px;
+  transform: scaleX(-1);
+}
+.serviceimgblur img{
+  position: relative;
+  margin-top: -100%;
+  margin-left: 1100px;
+  opacity: 20%;
+}
+
+.service-img2 img{
+  position: absolute;
+  bottom: 250px;
+  left: 200px;
+  transform: scaleX(-1);
+}
+.service-img20 {
+  opacity: 10%;
+  position: relative;
+  z-index: 1;
+}
+
 .service-img3 {
     position: relative;
     margin-top: -840px;
@@ -218,20 +246,34 @@ body {
 }
 .services9container {
     position: relative;
-    height: 90rem;
+    height: 69rem;
   }
 
-.services2container {
+/* .services2container {
     position: relative;
-}
+    margin-top: 100px;
+} */
 
-  .services2container,  .services4container, .services6container, .services8container{
+  .services6container, .services8container{
     width: 100%;
-    height: 65rem;
+    height: 69rem;
     background-color: white;
     position: relative;
   }
-  
+
+  .services2container {
+    width: 100%;
+    position: relative;
+    height: 54rem;
+    background-color: rgb(255, 255, 255);
+
+  }
+  .services4container {
+    width: 100%;
+    height: 60rem;
+    background-color: white;
+    position: relative;
+  }
   .services2body,  .services4body, .services6body, .services8body{
     height: 100%;
     padding-left: 80rem;
@@ -242,7 +284,7 @@ body {
 
   .services2content {
     position: relative;
-    margin-bottom: 500px;
+    margin-bottom: 100px;
   }
   
   .services4content {
@@ -255,9 +297,16 @@ body {
     font-size: 6rem;
     line-height: 0.3;
   }
+  .services9content {
+    margin-bottom: 600px;
+  }
+.services9content h2{
+  font-size: 5rem;
+  line-height: 0.3;
 
+}
 
-  .services2content h2, .services3content h2, .services5content h2, .services6content h2, .services7body h2, .services8body h2, .services9content h2{
+  .services2content h2, .services3content h2, .services5content h2, .services6content h2, .services7body h2, .services8body h2{
     font-size: 5rem;
     line-height: 0.3;
 
