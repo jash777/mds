@@ -9,77 +9,93 @@
 <body>
     <div id="desktop-index"></div>
     <div id="mobileContent"></div>
+    <div id="tabletContent"></div>
+
 
     <script>
-        function isMobile() {
-            return window.innerWidth <= 767;
-        }
+function isMobile() {
+    return window.innerWidth <= 767;
+}
 
-        function initializeMobileMenu() {
-            const navbarMenu = document.getElementById('navbarMenu');
-            const navbarToggle = document.getElementById('navbarToggle');
+function isTablet() {
+    return window.innerWidth > 767 && window.innerWidth <= 1024;
+}
 
-            if (navbarMenu && navbarToggle) {
-                navbarToggle.addEventListener('click', function() {
-                    navbarMenu.classList.toggle('active');
-                    navbarToggle.classList.toggle('active');
-                });
+function initializeResponsiveMenu() {
+    const navbarMenu = document.getElementById('navbarMenu');
+    const navbarToggle = document.getElementById('navbarToggle');
 
-                window.addEventListener('scroll', function() {
-                    const navbar = document.querySelector('.navbar');
-                    if (navbar) {
-                        if (window.scrollY > 50) {
-                            navbar.style.padding = '0.3rem 2rem';
-                            navbar.style.backgroundColor = 'rgba(162, 179, 212, 0.9)';
-                        } else {
-                            navbar.style.padding = '0.5rem 2rem';
-                            navbar.style.backgroundColor = 'var(--secondary-color)';
-                        }
-                    }
-                });
+    if (navbarMenu && navbarToggle) {
+        navbarToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '0.3rem 2rem';
+                } else {
+                    navbar.style.padding = '0.5rem 2rem';
+                }
             }
-        }
+        });
+    }
+}
 
-        function loadContent() {
-            const desktopContent = document.getElementById('desktop-index');
-            const mobileContent = document.getElementById('mobileContent');
+function loadContent() {
+    const desktopContent = document.getElementById('desktop-index');
+    const tabletContent = document.getElementById('tabletContent');
+    const mobileContent = document.getElementById('mobileContent');
 
-            if (isMobile()) {
-                fetch('../components/mobile.html')
-                    .then(response => response.text())
-                    .then(html => {
-                        mobileContent.innerHTML = html;
-                        desktopContent.innerHTML = '';
-                        initializeMobileMenu();
-                    });
-            } else {
-                fetch('index.html')
-                    .then(response => response.text())
-                    .then(html => {
-                        desktopContent.innerHTML = html;
-                        mobileContent.innerHTML = '';
-                    });
-            }
-        }
+    if (isMobile()) {
+        fetch('../components/mobile.html')
+            .then(response => response.text())
+            .then(html => {
+                mobileContent.innerHTML = html;
+                tabletContent.innerHTML = '';
+                desktopContent.innerHTML = '';
+                initializeResponsiveMenu();
+            });
+    } else if (isTablet()) {
+        fetch('../components/tablet.html')
+            .then(response => response.text())
+            .then(html => {
+                tabletContent.innerHTML = html;
+                mobileContent.innerHTML = '';
+                desktopContent.innerHTML = '';
+                initializeResponsiveMenu();
+            });
+    } else {
+        fetch('index.html')
+            .then(response => response.text())
+            .then(html => {
+                desktopContent.innerHTML = html;
+                tabletContent.innerHTML = '';
+                mobileContent.innerHTML = '';
+            });
+    }
+}
 
-        // Initial load
-        loadContent();
+// Initial load
+loadContent();
 
-        // Reload on window resize
-        window.addEventListener('resize', loadContent);
+// Reload on window resize
+window.addEventListener('resize', loadContent);
 
-    window.onload = function() {
-        // Get all cookies and split them by ';'
-        const cookies = document.cookie.split(";");
+window.onload = function() {
+    // Get all cookies and split them by ';'
+    const cookies = document.cookie.split(";");
 
-        // Loop through cookies and delete each one by setting its expiry date in the past
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i];
-            const eqPos = cookie.indexOf("=");
-            const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
-        }
-    };
+    // Loop through cookies and delete each one by setting its expiry date in the past
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/";
+    }
+};
 
 
     </script>
